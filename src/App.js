@@ -11,10 +11,10 @@ class App extends Component { //the app class inherits from the component.
     ]
   }
 
-  switchNameHandler = (newName) => {
+  switchNameHandler = (event) => {
     this.setState({ persons:
       [
-        {name: newName, age: 20},
+        {name: event.target.value, age: 20},
         {name: 'Brendan', age: 29},
         {name: 'Trent', age: 29}
       ]})
@@ -23,8 +23,8 @@ class App extends Component { //the app class inherits from the component.
     return (
       <div className="App">
        <h1> hello! </h1>
-       <button onClick={this.switchNameHandler.bind(this, 'Maximillian')}>Switch Name!</button>
-       < Person name={this.state.persons[0].name} age={this.state.persons[0].age} click={this.switchNameHandler.bind(this, 'It worked!')}/>
+       <button onClick={() => this.switchNameHandler('this is a test')}>Switch Name!</button>
+       < Person name={this.state.persons[0].name} age={this.state.persons[0].age} click={this.switchNameHandler.bind(this, 'It worked!')} changed={this.switchNameHandler}/>
        < Person name={this.state.persons[1].name} age={this.state.persons[1].age}> & I like coding!</Person>
       </div>
     );
